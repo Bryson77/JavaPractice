@@ -21,9 +21,15 @@ import java.text.DecimalFormat;
             System.out.println("Your Current balance is R" + currentBal);
             break;
             case 2: 
+            System.out.println("How much do you want to deposit?");
+            depositedAmnt = userInput.nextInt();
+            currentBal = depositedAmnt + currentBal;
             System.out.println("You have successfully deposited R" +  depositedAmnt + "." + "Your current balance is: R" + currentBal);
             break;
             case 3:
+            System.out.println("How much would you like to withdraw?");
+            withdrawalAmnt = userInput.nextInt();
+            currentBal = currentBal - withdrawalAmnt;
             System.out.println("Your withdrawal of R" + withdrawalAmnt + "was successful" + "Your current balance is: R" + currentBal);
             break;
             case 4:
@@ -32,13 +38,6 @@ import java.text.DecimalFormat;
             default:
             System.out.println("Invalid input");
         }
-        
-        
-        //Get user balance
-        //Withdraw
-        //Deposit 
-        //end
-
 
     }
  } 
