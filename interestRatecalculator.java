@@ -1,34 +1,33 @@
 import java.util.Scanner;
-import java.util.Random;
 import java.text.DecimalFormat;
+
 public class interestRatecalculator{
-    ///////Interest rate calculator
     public static void main(String args[]){
         Scanner userInput = new Scanner(System.in);
         Double interestRate = 7.05/100d;
-        DecimalFormat formatter = new DecimalFormat("0.00");
+        DecimalFormat formatter = new DecimalFormat("R #,##0.00");
         
-        System.out.println("Please enter the amount you wish to invest: R");
+        System.out.print("Please enter the amount you wish to invest: R");
         int investmentAMNT = userInput.nextInt();
-        System.out.println("How many years do you wish to invest it for?: ");
+        System.out.print("How many years do you wish to invest it for?: ");
         int years = userInput.nextInt();
 
         System.out.println("-----------------------------------------------");
-        System.out.println("Option \t\t\t\t |Future Value");
+        System.out.println("Option                          |Future Value");
 
-        Double simpleInterest = (investmentAMNT * interestRate * years) + investmentAMNT;
-        Double compoundyearly = (investmentAMNT * (Math.pow((1 + interestRate), years)));
-        Double compoundedquaterly = ((investmentAMNT) * Math.pow((1 + (interestRate/4)), (4 * years)));
-        Double bestPerforming = Math.max(simpleInterest, (Math.max(compoundedquaterly, compoundyearly)));
+        // Fixed simple interest formula
+        Double simpleInterest = investmentAMNT * (1 + interestRate * years);
+        Double compoundyearly = investmentAMNT * Math.pow((1 + interestRate), years);
+        Double compoundedquaterly = investmentAMNT * Math.pow((1 + (interestRate/4)), (4 * years));
+        Double bestPerforming = Math.max(simpleInterest, Math.max(compoundedquaterly, compoundyearly));
 
         System.out.println("-----------------------------------------------");
-        System.out.println("Simple Interest \t\t\t\t | R" + formatter.format(simpleInterest) );
-        System.out.println("Compound Interest (Yearly) \t\t\t\t | R" + formatter.format(compoundyearly) );
-        System.out.println("Compound Interest (Quaterly) \t\t\t\t | R" + formatter.format(compoundedquaterly) ); 
+        System.out.println("Simple Interest                  | " + formatter.format(simpleInterest));
+        System.out.println("Compound Interest (Yearly)       | " + formatter.format(compoundyearly));
+        System.out.println("Compound Interest (Quarterly)    | " + formatter.format(compoundedquaterly)); 
         System.out.println("-----------------------------------------------");
-        System.out.println(">>>The best performing option yields: R" + formatter.format(bestPerforming)); 
+        System.out.println(">>>The best performing option yields: " + formatter.format(bestPerforming));
 
-        
-
+        userInput.close();
     }
 }
