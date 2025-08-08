@@ -13,9 +13,5 @@ public class averageAge{
         avg = sum / length;
 
         System.out.println( avg );
-
-
-
- 
     }
 }
